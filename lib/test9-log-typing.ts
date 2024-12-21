@@ -1,3 +1,4 @@
+import { getProductsCountMock, getProductsMock } from "./data";
 import { pipe } from "./pipe";
 import { getNextSinceProductId, getProducts, getProductsCount } from "./test";
 
@@ -125,4 +126,8 @@ export const getAllProducts = pipe(
   logFn()
 );
 
-getAllProducts({});
+export const getAllProductsMock = pipe(
+  getProductsMock,
+  getAllItemsFn(getProductsCountMock, getNextSinceProductId),
+  durationFn
+);
